@@ -4,13 +4,7 @@ on:
   push:
     branches:
       - main
-      - master
-      - develop
-  pull_request:
-    branches:
-      - main
-      - master
-  workflow_dispatch:  # Permite trigger manual
+  workflow_dispatch:
 
 jobs:
   build:
@@ -36,21 +30,28 @@ jobs:
         run: |
           cd mobile_app
           flutter clean
-          flutter pub get --verbose
-          
+          flutter pub get
+
       - name: 🏗️ Build APK (Release - ARM64)
         run: |
           cd mobile_app
-          echo "Starting Flutter build..."
           flutter build apk \
             --target-platform android-arm64 \
-            --release \
-            --verbose 2>&1 | head -n 100
-          echo "Build completed!"
+            --release
+
+      - name: ✅ Verify APK
+        run: |
+          if [ -f mobile_app/build/app/outputs/flutter-apk/app-release.apk ]; then
+            ls -lh mobile_app/build/app/outputs/flutter-apk/app-release.apk
+            echo "APK built successfully!"
+          else
+            echo "APK not found!"
+            exit 1
+          fi
 
       - name: 📦 Upload APK as Artifact
-        uses: actions/upload-artifact@v4
         if: success()
+        uses: actions/upload-artifact@v4
         with:
           name: flutter-app-apk
           path: mobile_app/build/app/outputs/flutter-apk/app-release.apk
@@ -61,20 +62,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: mobile_app/build/app/outputs/flutter-apk/app-release.apk
-          tag_name: apk-${{ github.run_id }}
-          body: |
-            ✅ APK compilado com sucesso!
-            - Arquitetura: ARM64
-            - Flutter: 3.32.2
-            - Build: Release
-            - Data: ${{ github.event.head_commit.timestamp }}
+          tag_name: apk-${{ github.run_number }}
+          body: "✅ APK Compilado com Sucesso!"
           draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🚨 Build Failed Notification
-        if: failure()
-        run: |
-          echo "❌ Compilação falhou. Veja os logs acima."
-          exit 1
