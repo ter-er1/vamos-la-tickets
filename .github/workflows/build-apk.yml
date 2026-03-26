@@ -44,7 +44,17 @@ jobs:
           flutter build apk \
             --target-platform android-arm64 \
             --release \
-            --verbose
+            --verbose 2>&1 | tee build.log
+          
+      - name: 📋 Show Build Log if Failed
+        if: failure()
+        run: |
+          cd mobile_app
+          if [ -f build.log ]; then
+            echo "=== BUILD LOG ==="
+            cat build.log
+            echo "=== END LOG ==="
+          fi
 
       - name: 📦 Upload APK as Artifact
         uses: actions/upload-artifact@v4
