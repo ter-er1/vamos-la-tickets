@@ -1,0 +1,52 @@
+🎫 VAMOS LÁ TICKETS - INSTRUÇÕES FINAIS
+
+═══════════════════════════════════════════════════════════════
+
+✅ VOCÊ TEM TUDO PRONTO!
+
+1️⃣ INSTALAR NO TELEFONE (1 minuto)
+─────────────────────────────────────
+Conecte o telefone via USB e execute:
+
+./instalar-apk.sh
+
+Pronto! App instalado.
+
+2️⃣ RODAR O SERVIDOR (1 minuto)
+─────────────────────────────────────
+Abra outro terminal e execute:
+
+cd local_server
+npm start
+
+Vai aparecer: "Servidor rodando na porta 8000 ✅"
+
+3️⃣ CONFIGURAR O APP (2 minutos)
+─────────────────────────────────────
+- Abra o app "Vamos Lá Tickets"
+- Clique ⚙️ (Configurações)
+- Digite seu IP: 192.168.1.XXX
+  (encontre com: hostname -I)
+- Clique "Testar Conexão"
+- Se disser ✅ verde, pronto!
+
+4️⃣ USAR (instantâneo!)
+─────────────────────────────────────
+- Faça login (qualquer nome/email)
+- Aponte câmera para QR code
+- Automático! Valida e mostra resultado
+
+═══════════════════════════════════════════════════════════════
+
+🚀 TUDO FUNCIONANDO!
+
+✅ Servidor: Em rodução
+✅ App: Instalado e configurável
+✅ Scanner: Funciona via câmera
+✅ Validação: Em tempo real
+
+═══════════════════════════════════════════════════════════════
+
+Dúvida? Veja GUIA_FINAL.txt
+
+Sucesso! 🍀
