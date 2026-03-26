@@ -12,26 +12,26 @@ dependencies:
     sdk: flutter
 
   # QR Code Scanner
-  mobile_scanner: ^3.4.0
+  mobile_scanner: ^3.5.0
 
   # HTTP Requests
-  http: ^1.1.0
-  dio: ^5.3.0
+  http: ^1.6.0
+  dio: ^5.9.0
 
   # Database & Cache
-  sqflite: ^2.3.0
+  sqflite: ^2.4.0
 
   # State Management
-  provider: ^6.0.0
+  provider: ^6.1.0
 
   # Connectivity
   connectivity_plus: ^5.0.0
 
   # Sound
-  just_audio: ^0.9.0
+  just_audio: ^0.9.46
 
   # Crypto & UUID
-  crypto: ^3.0.0
+  crypto: ^3.0.7
   uuid: ^4.0.0
 
   # Additional
