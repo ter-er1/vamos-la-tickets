@@ -1,0 +1,182 @@
+================================================================================
+🎫 VAMOS LÁ TICKETS - INSTALAÇÃO E USO RÁPIDO
+================================================================================
+
+✅ PRONTO PARA USAR!
+
+Você tem 2 partes funcionando:
+
+1. ✅ SERVIDOR NODE.JS (local_server/)
+   - Porta: 8000
+   - Valida QR codes
+   - Gerencia ingressos
+
+2. ✅ APP ANDROID (mobile_app/)
+   - Scanneia QR codes
+   - Conecta ao servidor
+   - Mostra resultados
+
+================================================================================
+📲 INSTALAR O APP NO TELEFONE
+================================================================================
+
+PASSO 1: Conectar Telefone
+- Ligar USB Debugging no telefone (Configurações > Desenvolvimento)
+- Conectar via USB ao PC
+
+PASSO 2: Executar Script de Instalação
+No terminal:
+```bash
+cd "/home/justino/validaçao tickets"
+./instalar-apk.sh
+```
+
+Ou manualmente:
+```bash
+adb install -r app-debug-arm64.apk
+```
+
+PASSO 3: Aparecerá mensagem
+- ✅ "APK INSTALADO COM SUCESSO!"
+- App pronto para usar
+
+================================================================================
+🚀 USAR O APP
+================================================================================
+
+1️⃣ ABRIR O APP
+- Procure: "Vamos Lá Tickets"
+- Toque para abrir
+- Verá splash screen com logo 🎫
+
+2️⃣ CONFIGURAR SERVIDOR
+- Vai aparecer tela de login
+- Clique em ⚙️ (canto superior direito)
+- Vá para "Configurações"
+- Digite IP do seu servidor
+  * Exemplo: 192.168.1.100
+  * Ou: 192.168.1.5
+  * Ou: localhost (se no mesmo PC)
+- Clique "Testar Conexão"
+- Se conectar OK → ✅ Salva automaticamente
+
+3️⃣ FAZER LOGIN
+- Volta para tela de login
+- Digite seu nome
+- Digite um email
+- Clique "Entrar"
+
+4️⃣ USAR O SCANNER
+- Aparece câmera
+- Aponte para QR code
+- Automático! Valida e mostra resultado
+- ✅ Verde = Ingresso válido
+- ❌ Vermelho = Ingresso inválido/duplicado
+
+================================================================================
+🖥️ RODAR O SERVIDOR
+================================================================================
+
+OPÇÃO A: Terminal Simples
+```bash
+cd "/home/justino/validaçao tickets/local_server"
+npm start
+```
+
+OPÇÃO B: Em Background (Continua rodando)
+```bash
+cd "/home/justino/validaçao tickets/local_server"
+nohup npm start > server.log 2>&1 &
+```
+
+Servidor vai rodar em: http://0.0.0.0:8000
+
+================================================================================
+🧪 TESTAR TUDO JUNTO
+================================================================================
+
+Terminal 1 (Servidor):
+```bash
+cd "/home/justino/validaçao tickets/local_server"
+npm start
+```
+
+Terminal 2 (Testar API):
+```bash
+curl http://localhost:8000/stats
+```
+
+Telefone:
+- Instalar app com ./instalar-apk.sh
+- Configurar IP: 192.168.1.XXX (seu IP)
+- Fazer login
+- Testar scanner
+
+================================================================================
+📍 ENCONTRAR SEU IP
+================================================================================
+
+No terminal do PC:
+```bash
+hostname -I
+```
+
+Vai aparecer algo como: 192.168.1.100
+
+Use esse IP no app!
+
+================================================================================
+❓ PERGUNTAS FREQUENTES
+================================================================================
+
+P: O app abre com tela branca?
+R: Abra Settings (⚙️) e configure o IP do servidor
+
+P: Diz "Erro: Não conseguiu conectar"?
+R: 
+- Confira se o servidor tá rodando (npm start)
+- Confira se o IP está correto
+- Confira se estão na mesma rede (WiFi/Ethernet)
+
+P: Câmera não abre?
+R: Dê permissão no telefone:
+  Configurações > Apps > Vamos Lá Tickets > Permissions > Camera
+
+P: Validação não funciona?
+R: Verifique se há tickets no servidor:
+  curl http://localhost:8000/events
+
+================================================================================
+📦 ARQUIVOS IMPORTANTES
+================================================================================
+
+/home/justino/validaçao tickets/
+├── app-debug-arm64.apk          ← APK para instalar
+├── instalar-apk.sh              ← Script de instalação
+├── local_server/
+│   ├── server.js                ← Servidor Node.js
+│   ├── test-api.js              ← Testes
+│   └── package.json             ← Dependências
+└── mobile_app/
+    ├── lib/
+    │   ├── main.dart            ← App entrada
+    │   ├── screens/             ← Telas (Splash, Login, Settings, Scanner)
+    │   └── services/            ← Serviços (API, Config, Crypto, DB)
+    └── android/                 ← Configuração Android
+
+================================================================================
+✨ RESUMO
+================================================================================
+
+✅ Servidor Node.js: PRONTO (porta 8000)
+✅ App Android: PRONTO (APK compilado)
+✅ Configurável pela UI: SIM (Settings)
+✅ Sem tela branca: SIM (abre direto)
+
+🎯 Próximos passos:
+1. ./instalar-apk.sh
+2. npm start
+3. Configurar IP no app
+4. Testar!
+
+================================================================================
