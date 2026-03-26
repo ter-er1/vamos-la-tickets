@@ -1,0 +1,73 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flutter files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.fvm/fvm_config.json
+.packages
+build/
+pubspec.lock
+.pub/
+
+# Android/Gradle
+local_server/node_modules/
+mobile_app/.gradle/
+mobile_app/.gradle/**
+mobile_app/android/.gradle/
+mobile_app/android/.gradle/**
+mobile_app/android/local.properties
+mobile_app/android/**/GeneratedPluginRegistrant.java
+mobile_app/build/
+*.apk
+*.aab
+*.zip
+
+# iOS/macOS
+mobile_app/ios/.symlinks/
+mobile_app/ios/Flutter/Flutter.framework/
+mobile_app/ios/Flutter/Flutter.podspec
+mobile_app/ios/Flutter/Generated.xcconfig
+mobile_app/ios/Flutter/ephemeral/
+mobile_app/ios/Podfile
+mobile_app/ios/Podfile.lock
+mobile_app/macos/Flutter/GeneratedPluginRegistrant.swift
+mobile_app/macos/Flutter/ephemeral/
+
+# OS
+.DS_Store
+Thumbs.db
+.directory
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+
+# Local server
+local_server/.env
+local_server/tickets.db
+local_server/logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+temp/
+
+# Archives
+*.tar.gz
+*.zip
+*.rar
+
+# Documentation build
+docs/_build/
